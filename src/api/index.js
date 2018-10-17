@@ -1,5 +1,5 @@
-const host = /localhost/.test(window.location.host) ? 'https://baojia.chelun.com' : 'http://baojia-test.chelun.com'
-
+//const host = /localhost/.test(window.location.host) ? 'https://baojia.chelun.com' : 'http://baojia-test.chelun.com'
+const host = 'https://baojia.chelun.com'
 function sendRequest(url, method = 'GET', data = {}) {
   let parmas = {
     method
