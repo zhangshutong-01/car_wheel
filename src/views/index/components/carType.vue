@@ -5,7 +5,7 @@
       <p class="cartype_title">{{item.GroupName}}</p>
       <ul>
         <li v-for="(items,indexs) in item.GroupList" :key="indexs" class="cartype_item" @click="detail" :data-id="items.SerialID">
-          <img class="cartype_img" v-lazy="items.Picture" alt="">
+          <img class="cartype_img" v-lazy="items.Picture" :key="items.Picture" alt="">
           <div>
             <p>{{items.AliasName}}</p>
             <p>{{items.DealerPrice}}</p>
@@ -58,7 +58,7 @@
           target = e.target
         }
         if (target) {
-          this.$router.push({                                                                         
+          this.$router.push({
             path: '/detail',
             query: {
               serialID: target.dataset.id
@@ -66,6 +66,9 @@
           })
         }
       }
+    },
+    mounted() {
+
     }
   }
 
