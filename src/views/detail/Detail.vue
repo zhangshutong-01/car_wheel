@@ -60,7 +60,6 @@
         }
       },
       carImg() {
-        console.log(this.$route.query.serialID)
         this.$router.push({
           path: '/carImg',
           query: {
@@ -80,6 +79,10 @@
     },
     mounted() {
       this.detail(this.$route.query.serialID)
+      window.sessionStorage.setItem('query', JSON.stringify({
+        carid: '',
+        carname: ''
+      }))
     },
     updated() {
       this.isLoading = false

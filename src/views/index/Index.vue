@@ -8,7 +8,6 @@
           <li v-for="(item,indexs) in value" :key="indexs" class="car_item" @click="id(item.MasterID)">
             <img class="car_img" v-lazy="item.CoverPhoto" :data-src="item.CoverPhoto">
             <span class="car_name">{{item.Name}}</span>
-            <!-- <img v-if="item.tagurl" :src="item.tagurl"> -->
           </li>
         </ul>
       </div>

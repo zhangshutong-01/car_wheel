@@ -1,5 +1,5 @@
-//const host = /localhost/.test(window.location.host) ? 'https://baojia.chelun.com' : 'http://baojia-test.chelun.com'
 const host = 'https://baojia.chelun.com'
+
 function sendRequest(url, method = 'GET', data = {}) {
   let parmas = {
     method
@@ -40,9 +40,6 @@ export let getImgList = (param) => {
   for (let i in param) {
     search += `&${i}=${param[i]}`
   }
-  if (!param['ColorID']) {
-
-  }
   return sendRequest(`/v2-car-getImageList.html?${search.slice(1,search.length)}`)
 }
 export let getMoreImgList = (param) => {
@@ -53,7 +50,6 @@ export let getMoreImgList = (param) => {
   if (!param['pageSize']) {
     search += `&PageSize=30`
   }
-  // console.log(search.slice(1, search.length))
   return sendRequest(`/v2-car-getCategoryImageList.html?${search.slice(1,search.length)}`)
 }
 export let getColorList = (id) => {

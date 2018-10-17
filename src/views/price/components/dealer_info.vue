@@ -21,7 +21,7 @@
     mapState,
     mapActions,
     mapMutations
-  } from "vuex"
+  } from "vuex";
   export default {
     data() {
       return {
@@ -59,7 +59,6 @@
           }
         })
       }
-
     }
   }
 

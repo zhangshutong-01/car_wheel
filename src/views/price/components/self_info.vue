@@ -4,11 +4,11 @@
     <ul>
       <li>
         <span>姓名</span>
-        <input type="text" placeholder="输入你的真实中文姓名" maxLength="4">
+        <input type="text" placeholder="输入你的真实中文姓名" maxLength="4" ref="username">
       </li>
       <li>
         <span>手机</span>
-        <input type="numberF" placeholder="输入你的真实手机号码" oninput="if(value.length>11)value=value.slice(0,11)">
+        <input type="number" placeholder="输入你的真实手机号码" oninput="if(value.length>11)value=value.slice(0,11)" ref="phoneNum">
       </li>
       <li @click="address()">
         <span>城市</span>
@@ -16,7 +16,7 @@
       </li>
     </ul>
     <div class="quotation">
-      <button>询最低价</button>
+      <button @click="alert">询最低价</button>
     </div>
   </div>
 </template>
@@ -33,7 +33,34 @@
       })
     },
     methods: {
-      ...mapMutations(['address'])
+      ...mapMutations(['address']),
+      alert() {
+        var change = "",
+          tit = ''
+        var username = new RegExp(/^[\u4E00-\u9FA5A-Za-z]+$/);
+        var phone_num = new RegExp(/^1[34578]\d{9}$/);
+        if (this.$refs.username.value === '') {
+          change = "用户名不能为空"
+          tit = ''
+          this.$alert(change, tit)
+        } else if (this.$refs.phoneNum.value === '') {
+          change = "手机号不能为空"
+          tit = ''
+          this.$alert(change, tit)
+        } else if (!username.test(this.$refs.username.value)) {
+          change = "请输入正确的姓名"
+          tit = ''
+          this.$alert(change, tit)
+        } else if (!phone_num.test(this.$refs.phoneNum.value)) {
+          change = "请输入正确的手机号"
+          tit = ''
+          this.$alert(change, tit)
+        } else {
+          change = "询价成功"
+          tit = ''
+          this.$alert(change, tit)
+        }
+      }
     }
   }
 

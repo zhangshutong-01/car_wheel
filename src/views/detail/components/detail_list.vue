@@ -43,7 +43,6 @@
     methods: {
       ...mapMutations(['tabs']),
       price(id) {
-        console.log()
         this.$router.push({
           path: '/price',
           query: {

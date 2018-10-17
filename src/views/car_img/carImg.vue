@@ -5,7 +5,7 @@
         <span>{{colorName}}</span>
       </p>
       <p @click="type()">
-        <span>车款</span>
+        <span>{{carname}}</span>
       </p>
     </div>
     <div class="img_main">
@@ -53,12 +53,14 @@
       return {
         serialID: null,
         more_show: false,
-        colorName: '颜色'
+        colorName: '颜色',
+        carname: "车款"
       }
     },
     methods: {
       ...mapActions({
-        img: 'carImg/img'
+        img: 'carImg/img',
+        carType: 'carImg/carType'
       }),
       ...mapMutations({
         moreImg: 'carImg/moreImg',
@@ -124,8 +126,6 @@
         return {
           on: {
             slideChangeTransitionStart: function () {
-              // console.log(this)
-              console.log(that.pages)
               if (this.activeIndex > (that.Page - 1) * 30 - 5) {
                 that.srco_img({
                   SerialID: this.serialID,
@@ -147,10 +147,17 @@
       this.more_show = false
       this.serialID = this.$route.query.serialID
       this.colorName = this.$route.query.name || '颜色'
+      this.carname = JSON.parse(window.sessionStorage.getItem('query')).carname || '车款'
       this.img({
         SerialID: this.$route.query.serialID,
         ColorID: this.$route.query.ColorID
       })
+      if (JSON.parse(window.sessionStorage.getItem('query')).carid) {
+        this.carType({
+          SerialID: this.$route.query.serialID,
+          CarID: JSON.parse(window.sessionStorage.getItem('query')).carid
+        })
+      }
     }
   }
 

@@ -49,6 +49,7 @@
             serialID: this.$route.query.SerialID
           }
         })
+        window.history.go(-2)
       }
     },
     computed: {

@@ -17,6 +17,9 @@
 </script>
 
 <style>
+  @import './styles/_alert.css';
+  @import './styles/common.css';
+
   #app {
     width: 100%;
     height: 100%;

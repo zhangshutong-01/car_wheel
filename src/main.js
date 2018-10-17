@@ -6,9 +6,9 @@ import store from './store'
 
 import VueLazyload from 'vue-lazyload'
 import vueSwiper from 'vue-awesome-swiper'
+import Alert from '@/components/alert'
 
 Vue.use(VueLazyload)
-
 Vue.use(VueLazyload, {
   preLoad: 1.3,
   error: 'dist/error.png',
@@ -17,7 +17,7 @@ Vue.use(VueLazyload, {
 })
 
 Vue.use(vueSwiper)
-
+Vue.prototype.$alert = Alert
 import './styles/common.css'
 import 'swiper/dist/css/swiper.css'
 

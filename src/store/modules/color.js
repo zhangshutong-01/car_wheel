@@ -28,14 +28,12 @@ const mutations = {
     for (var i in state.color) {
       if (i === payload.con) {
         state.color_list = state.color[i]
-        console.log(state.color_list)
       }
     };
 
     state.ind = payload.ind
   },
   color_id(state, payload) {
-    console.log(payload)
     state.color_id = payload
   }
 }

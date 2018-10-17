@@ -8,7 +8,7 @@ const state = {
   ImageID: null,
   current: 0,
   showSwiper: false,
-  pages: 2,
+  pages: 2
 }
 
 const mutations = {
@@ -44,6 +44,9 @@ const mutations = {
     getMoreImgList(obj).then(res => {
       state.imgmore_list.List.push(...res.data.List)
     })
+  },
+  upcarType(state, payload) {
+    state.img_list = payload
   }
 }
 
@@ -63,7 +66,15 @@ const actions = {
         commit('upImgdata', res.data)
       })
     }
+  },
+  carType({
+    commit
+  }, payload) {
+    getImgList(payload).then(res => {
+      commit('upcarType', res.data)
+    })
   }
+
 }
 export default {
   namespaced: true,

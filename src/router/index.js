@@ -15,9 +15,11 @@ const color = () =>
   import('@/views/car_img/color')
 const carType = () =>
   import('@/views/car_img/carType')
+const login = () =>
+  import('@/views/login/login')
 
 vue.use(vueRouter)
-export default new vueRouter({
+const router = new vueRouter({
   routes: [{
     path: '/index',
     name: 'index',
@@ -41,7 +43,26 @@ export default new vueRouter({
     path: '/carType',
     component: carType,
   }, {
+    path: '/login',
+    component: login,
+  }, {
     path: '*',
     redirect: '/index'
   }]
 })
+router.beforeEach((to, from, next) => {
+  var userInfo = window.sessionStorage.getItem('username'); //获取浏览器缓存的用户信息
+  var userpassword = window.sessionStorage.getItem('password');
+  if (userInfo && userpassword) { //如果有就直接到首页咯
+    next();
+  } else {
+    if (to.path == '/login') { //如果是登录页面路径，就直接next()
+      next();
+    } else { //不然就跳转到登录；
+      next('/login');
+    }
+
+  }
+  next();
+})
+export default router

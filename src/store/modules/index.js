@@ -27,7 +27,6 @@ const mutations = {
     state.letter = letters
   },
   upcardata(state, payload) {
-    console.log(payload.data)
     state.car_list = payload.data
     state.isShow = true
   },
@@ -50,7 +49,6 @@ const actions = {
   id({
     commit
   }, payload) {
-    console.log(payload)
     getMakeList(payload).then(res => {
       commit('upcardata', res);
     })

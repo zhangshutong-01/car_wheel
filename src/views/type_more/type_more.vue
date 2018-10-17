@@ -42,13 +42,13 @@
     methods: {
       ...mapMutations(['tabs']),
       price(id) {
-        console.log()
         this.$router.push({
-          path: '/price',
-          query: {
-            carID: this.detail_sort_all[id.first][id.second].car_id
-          }
-        })
+            path: '/price',
+            query: {
+              carID: this.detail_sort_all[id.first][id.second].car_id
+            }
+          }),
+          window.history.go(-2)
       }
     }
   }
